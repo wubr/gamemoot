@@ -3,5 +3,19 @@
 require 'rails_helper'
 
 RSpec.describe Table, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:table) { Table.new }
+  subject { table }
+
+  describe 'validation' do
+    before do
+      subject.valid?
+    end
+
+    describe 'name' do
+      it 'cannot be blank' do
+        expect(subject.errors[:name]).to include "can't be blank"
+      end
+    end
+  end
+
 end

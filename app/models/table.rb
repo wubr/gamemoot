@@ -2,4 +2,5 @@
 
 # A Table is where a game is played, either literally or figuratively
 class Table < ApplicationRecord
+  validates :name, presence: true
 end
