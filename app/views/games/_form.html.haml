@@ -1,0 +1,17 @@
+= form_with(model: game, local: true, class: 'form') do |form|
+  - if game.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(game.errors.count, "error")
+        prohibited this game from being saved:
+      %ul
+        - game.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: 'form-control'
+  .form-group
+    = form.label :bgg_game_id, "BoardGameGeek Game ID"
+    = form.number_field :bgg_game_id, class: 'form-control'
+  #actions
+    = form.submit
