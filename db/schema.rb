@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170902175126) do
+ActiveRecord::Schema.define(version: 20170902185606) do
+
+  create_table "games", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "bgg_game_id"
+    t.integer "min_players"
+    t.integer "max_players"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bgg_game_id"], name: "index_games_on_bgg_game_id", unique: true
+    t.index ["name"], name: "index_games_on_name", unique: true
+  end
 
   create_table "tables", force: :cascade do |t|
     t.string "name", null: false
