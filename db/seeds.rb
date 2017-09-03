@@ -1,8 +1,7 @@
 # frozen_string_literal: true
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+Game.create!(name: "Memoir '44", bgg_game_id: 10630)
+Game.create!(name: 'In a Grove', bgg_game_id: 102181)
+Game.create!(name: 'Mysterium', bgg_game_id: 181304)
+Game.create!(name: 'Suburbia', bgg_game_id: 123260)
+Game.create!(name: 'Inis', bgg_game_id: 155821)
