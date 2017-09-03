@@ -1,5 +1,7 @@
-%h1 Editing Game
-= render 'form', game: @game
-= link_to 'Show', @game
-|
-= link_to 'Back', games_path
+.row
+  .col
+    %h1 Editing Game
+    = render 'form', game: @game
+    = link_to 'Show', @game
+    |
+    = link_to 'Back', games_path
