@@ -19,7 +19,7 @@ PreCommit:
   RuboCop:
     enabled: true
     on_warn: fail # Treat all warnings as failures
-    command: ['bundle', 'exec', 'rubocop', '-D']
+    command: ['bundle', 'exec', 'rubocop', '-D', '--force-exclusion', '-c', '.rubocop.yml']
   Reek:
     enabled: true
     flags: ['--single-line', '--no-color', '--force-exclusion']
