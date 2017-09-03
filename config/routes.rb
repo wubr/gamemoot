@@ -5,4 +5,8 @@ Rails.application.routes.draw do
     get 'new', action: :new
     post 'new', action: :create
   end
+  resources :tables do
+    get 'new', action: :new
+    post 'new', action: :create
+  end
 end
