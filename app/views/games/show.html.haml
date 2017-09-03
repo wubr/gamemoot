@@ -1,4 +1,12 @@
-%p#notice= notice
-= link_to 'Edit', edit_game_path(@game)
-|
-= link_to 'Back', games_path
+.row
+  .col
+    - if notice
+      %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
+    %h2= @game.name
+    %dl
+      %dt BoardGameGeek ID Number
+      %dd 
+        %a{href: bgg_url(@game.bgg_game_id)}= @game.bgg_game_id
+    = link_to 'Edit', edit_game_path(@game)
+    |
+    = link_to 'Back', games_path

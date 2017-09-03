@@ -1,6 +1,6 @@
 = form_with(model: game, local: true, class: 'form') do |form|
   - if game.errors.any?
-    #error_explanation
+    #error_explanation.alert.alert-danger
       %h2
         = pluralize(game.errors.count, "error")
         prohibited this game from being saved:
