@@ -19,6 +19,6 @@
               %a{href: bgg_url(game.bgg_game_id)}= game.bgg_game_id
             %td= link_to 'Show', game
             %td= link_to 'Edit', edit_game_path(game)
-            %td= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' }
+            %td= link_to 'Delete', game, method: :delete, data: { confirm: 'Are you sure?' }
     %br/
     = link_to 'New Game', new_game_path

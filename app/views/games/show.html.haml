@@ -3,6 +3,7 @@
     - if notice
       %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
     %h2= @game.name
+    = link_to 'Delete', @game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
     %dl
       %dt BoardGameGeek ID Number
       %dd 
