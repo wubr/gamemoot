@@ -28,7 +28,7 @@ class TablesController < ApplicationController
     @table = Table.new(table_params)
 
     if @table.save
-      redirect_to @table, notice: 'Table was successfully created.'
+      redirect_to @table, notice: "'#{@table.name}' has been successfully created."
     else
       render :new
     end
@@ -38,7 +38,7 @@ class TablesController < ApplicationController
   # PATCH/PUT /tables/1.json
   def update
     if @table.update(table_params)
-      redirect_to @table, notice: 'Table was successfully updated.'
+      redirect_to @table, notice: "'#{@table.name}' has been successfully updated."
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class TablesController < ApplicationController
   # DELETE /tables/1.json
   def destroy
     @table.destroy
-    redirect_to tables_url, notice: 'Table was successfully destroyed.'
+    redirect_to tables_url, notice: "'#{@table.name}' has been cancelled."
   end
 
   private
@@ -59,6 +59,6 @@ class TablesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def table_params
-    params.fetch(:table, {})
+    params.require(:table).permit(:name)
   end
 end

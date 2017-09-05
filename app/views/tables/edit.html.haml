@@ -1,6 +1,9 @@
 %h1 Editing table
 
-= render 'form'
+- if notice
+  %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
+
+= render 'form', table: @table
 
 = link_to 'Show', @table
 \|

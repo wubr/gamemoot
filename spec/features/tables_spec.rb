@@ -7,7 +7,7 @@ RSpec.describe Table, type: :feature do
     table_name = 'My Table'
     visit root_path
     fill_in 'table[name]', with: table_name
-    click_link('Create Table')
+    click_button('Create Table')
     expect(page).to have_content "'#{table_name}' has been successfully created."
   end
 
@@ -21,7 +21,7 @@ RSpec.describe Table, type: :feature do
   feature 'validation' do
     scenario 'makes sure the Table has a name' do
       visit root_path
-      click_link('Create Table')
+      click_button('Create Table')
       expect(page).to have_content "Name can't be blank"
     end
   end
