@@ -10,6 +10,7 @@ RSpec.describe Table, type: :feature do
     click_link('Create Table')
     expect(page).to have_content "'#{table_name}' has been successfully created."
   end
+
   scenario 'can be cancelled from its own page' do
     table_to_cancel = Table.create(name: 'My Table')
     visit table_path(table_to_cancel)
