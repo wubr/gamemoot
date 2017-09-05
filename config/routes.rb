@@ -9,4 +9,6 @@ Rails.application.routes.draw do
     get 'new', action: :new
     post 'new', action: :create
   end
+
+  root to: 'tables#index'
 end
