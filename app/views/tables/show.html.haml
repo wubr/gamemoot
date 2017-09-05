@@ -1,6 +1,10 @@
-%p#notice= notice
-
-
-= link_to 'Edit', edit_table_path(@table)
-\|
-= link_to 'Back', tables_path
+.row
+  .col
+    - if notice
+      %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
+    %h2= @table.name
+    = link_to 'Cancel', @game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
+    %p This is where table stuff is going to go
+    = link_to 'Edit', edit_table_path(@table)
+    \|
+    = link_to 'Back', tables_path
