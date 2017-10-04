@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     get 'new', action: :new
     post 'new', action: :create
   end
+
+  resources :game_tables, only: [:create]
+
   resources :tables do
     get 'new', action: :new
     post 'new', action: :create
