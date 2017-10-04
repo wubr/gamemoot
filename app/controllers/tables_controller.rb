@@ -3,6 +3,8 @@
 # Controls actions relating to Table objects
 class TablesController < ApplicationController
   before_action :set_table, only: %i[show edit update destroy]
+  before_action :games, only: %i[show]
+  before_action :game_table, only: %i[show]
 
   # GET /tables
   # GET /tables.json
@@ -52,6 +54,14 @@ class TablesController < ApplicationController
   end
 
   private
+
+  def games
+    @games ||= Game.all
+  end
+
+  def game_table
+    @game_table ||= GameTable.new
+  end
 
   def set_table
     @table = Table.find(params[:id])

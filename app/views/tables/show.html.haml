@@ -5,6 +5,12 @@
     %h2= @table.name
     = link_to 'Cancel', @game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
     %p This is where table stuff is going to go
+    %h3 Add a game to this table
+    = form_for @game_table do |f|
+      = f.label :game_id, 'Available Games'
+      = f.collection_select :game_id, @games, :id, :name
+      = hidden_field_tag 'game_table[table_id]', @table.id
+      = f.submit 'Add Game'
     = link_to 'Edit', edit_table_path(@table)
     \|
     = link_to 'Back', tables_path
