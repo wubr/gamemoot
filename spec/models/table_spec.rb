@@ -6,7 +6,8 @@ RSpec.describe Table, type: :model do
   let(:table) { Table.new }
   subject { table }
 
-  it { is_expected.to have_and_belong_to_many :games }
+  it { is_expected.to have_many :game_tables }
+  it { is_expected.to have_many :games }
 
   describe 'validation' do
     before do
