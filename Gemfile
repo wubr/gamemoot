@@ -47,6 +47,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'launchy'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'reek', '>= 4.7.2'
   gem 'rubocop', '>= 0.49.1'
