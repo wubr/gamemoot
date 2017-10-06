@@ -1,3 +1,5 @@
-%tr
+%tr{id: "game_table_#{game_table.id}"}
   %td
-    = game.name
+    = game_table.game.name
+  %td
+    = link_to 'Remove', game_table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger', id: "remove_game_table_#{game_table.id}"

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     post 'new', action: :create
   end
 
-  resources :game_tables, only: [:create]
+  resources :game_tables, only: %i[create destroy]
 
   resources :tables do
     get 'new', action: :new

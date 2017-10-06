@@ -14,9 +14,18 @@ class GameTablesController < ApplicationController
     end
   end
 
+  def destroy
+    game_table.destroy
+    redirect_to game_table.table, notice: "'#{game_table.game.name}' has been removed from the table."
+  end
+
   private
 
   def table_params
     params.require(:game_table).permit(:game_id, :table_id)
+  end
+
+  def game_table
+    @game_table ||= GameTable.find(params[:id])
   end
 end
