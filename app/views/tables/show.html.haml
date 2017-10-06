@@ -8,8 +8,9 @@
     %table.table#to-play
       %thead
         %th Games at this table
+        %th Actions
       %tbody
-        = render partial: 'game_row', collection: @table.games, as: :game
+        = render partial: 'game_row', collection: @table.game_tables, as: :game_table
     %h3 Add a game to this table
     = form_for @game_table do |f|
       = f.label :game_id, 'Available Games'

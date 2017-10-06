@@ -19,13 +19,14 @@ RSpec.describe 'GameTable', type: :feature do
   end
 
   scenario 'removing a game from a table' do
-    @table.games << @game
+    game_table = GameTable.create!(table: @table, game: @game)
     visit table_path(@table)
-    click_button('Remove Game')
-    within('table#to-play') do
+    within(:css, "tr#game_table_#{game_table.id}") do
+      click_link('Remove')
+    end
+    expect(page).to have_content 'has been removed from the table'
+    within(:css, 'table#to-play') do
       expect(page).not_to have_content @game.name
     end
   end
-
-  scenario 'putting a game on a table multiple times'
 end
