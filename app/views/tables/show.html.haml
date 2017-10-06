@@ -5,6 +5,11 @@
     %h2= @table.name
     = link_to 'Cancel', @game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
     %p This is where table stuff is going to go
+    %table.table#to-play
+      %thead
+        %th Games at this table
+      %tbody
+        = render partial: 'game_row', collection: @table.games, as: :game
     %h3 Add a game to this table
     = form_for @game_table do |f|
       = f.label :game_id, 'Available Games'
