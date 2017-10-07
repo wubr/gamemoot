@@ -10,9 +10,9 @@ class Game < ApplicationRecord
   before_save :fetch_game_info
 
   private
+
   def fetch_game_info
-    if(bgg_game_id.present? && bgg_game_id_changed?)
-      assign_attributes(BggGameInfoFetcher.new.fetch_game_info(self))
-    end
+    return unless bgg_game_id.present? && bgg_game_id_changed?
+    assign_attributes(BggGameInfoFetcher.fetch_game_info(self))
   end
 end
