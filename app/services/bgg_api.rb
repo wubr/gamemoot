@@ -7,7 +7,8 @@ class BggApi
   SEARCH_URL = "#{BASE_URL}/search"
 
   def self.game_info(id)
-    parsed_resp = parse_response(RestClient.get(THING_URL, params: { id: id, type: 'boardgame' }).body)
+    parsed_resp = get_response(THING_URL, id: id, type: 'boardgame')
+    return nil unless response_contains_item_nodes(parsed_resp)
     {
       name: field_value(parsed_resp, 'name'),
       min_players: field_value(parsed_resp, 'minplayers').to_i,
@@ -32,7 +33,19 @@ class BggApi
     parsed_resp.at_css(field).try(:[], 'value')
   end
 
+  def self.get_response(url, params)
+    parse_response(RestClient.get(url, params: params).body)
+  rescue SocketError, RestClient::ExceptionWithResponse => error
+    Rails.logger.error "Error during BggApi::get_response(#{url}, #{params}): #{error}"
+    nil
+  end
+
   def self.parse_response(resp)
     Nokogiri::XML.parse(resp)
+  end
+
+  def self.response_contains_item_nodes(resp)
+    return false unless resp
+    resp.at_css('items').css('item').count.positive?
   end
 end
