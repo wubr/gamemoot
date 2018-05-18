@@ -27,6 +27,8 @@ class Game < ApplicationRecord
   private
 
   def fetch_game_info
+    return if Rails.env.test?
+
     return unless bgg_game_id.present? && bgg_game_id_changed?
     game_info = BggGameInfoFetcher.fetch_game_info(self)
     if game_info
