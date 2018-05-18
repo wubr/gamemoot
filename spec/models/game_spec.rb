@@ -40,4 +40,41 @@ RSpec.describe Game, type: :model do
       end
     end
   end
+
+  describe '#players_supported' do
+    context 'when min and max players is set to 2 and 5' do
+      let(:game) { Game.new min_players: 2, max_players: 5 }
+
+      it 'returns the range of players supported' do
+        expect(game.players_supported).to eq '2-5'
+      end
+    end
+
+    context 'when min and max players are nil' do
+      it 'returns ?' do
+        expect(game.players_supported).to eq '?'
+      end
+    end
+
+    context 'when min players is 2 and max players is not set' do
+      let(:game) { Game.new min_players: 2 }
+      it 'returns 2-?' do
+        expect(game.players_supported).to eq '2-?'
+      end
+    end
+
+    context 'when max players is 5 and min players is not set' do
+      let(:game) { Game.new max_players: 5 }
+      it 'returns ?-5' do
+        expect(game.players_supported).to eq '?-5'
+      end
+    end
+
+    context 'when min and max players are set to 3' do
+      let(:game) { Game.new min_players: 3, max_players: 3 }
+      it 'returns 3' do
+        expect(game.players_supported).to eq '3'
+      end
+    end
+  end
 end

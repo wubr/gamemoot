@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'GameTable', type: :feature do
   before do
     @table = Table.create!(name: 'Our Table')
-    @game = Game.create!(name: 'Our Game')
+    @game = Game.create!(name: 'Our Game', max_players: 5, min_players: 2)
   end
 
   scenario 'setting a game on a table' do
@@ -15,6 +15,7 @@ RSpec.describe 'GameTable', type: :feature do
 
     within('table#to-play') do
       expect(page).to have_content @game.name
+      expect(page).to have_content @game.players_supported
     end
   end
 

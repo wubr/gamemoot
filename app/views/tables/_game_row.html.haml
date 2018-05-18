@@ -2,4 +2,6 @@
   %td
     = game_table.game.name
   %td
+    = game_table.game.players_supported
+  %td
     = link_to 'Remove', game_table, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger', id: "remove_game_table_#{game_table.id}"

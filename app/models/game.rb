@@ -9,6 +9,21 @@ class Game < ApplicationRecord
 
   before_validation :fetch_game_info
 
+  def players_supported
+    min = min_players_or_unknown
+    max = max_players_or_unknown
+    return min.to_s if min == max
+    "#{min}-#{max}"
+  end
+
+  def min_players_or_unknown
+    min_players || '?'
+  end
+
+  def max_players_or_unknown
+    max_players || '?'
+  end
+
   private
 
   def fetch_game_info
