@@ -24,6 +24,21 @@ class Game < ApplicationRecord
     max_players || '?'
   end
 
+  def playtime_minutes
+    min = min_playtime_minutes_or_unknown
+    max = max_playtime_minutes_or_unknown
+    return min.to_s if min == max
+    "#{min}-#{max}"
+  end
+
+  def min_playtime_minutes_or_unknown
+    min_playtime_minutes || '?'
+  end
+
+  def max_playtime_minutes_or_unknown
+    max_playtime_minutes || '?'
+  end
+
   private
 
   def fetch_game_info

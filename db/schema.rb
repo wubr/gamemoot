@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171004014853) do
+ActiveRecord::Schema.define(version: 20180518204655) do
 
   create_table "game_tables", force: :cascade do |t|
     t.integer "game_id"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20171004014853) do
     t.integer "max_players"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "min_playtime_minutes"
+    t.integer "max_playtime_minutes"
     t.index ["bgg_game_id"], name: "index_games_on_bgg_game_id", unique: true
     t.index ["name"], name: "index_games_on_name", unique: true
   end

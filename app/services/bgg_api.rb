@@ -12,7 +12,9 @@ class BggApi
     {
       name: field_value(parsed_resp, 'name'),
       min_players: field_value(parsed_resp, 'minplayers').to_i,
-      max_players: field_value(parsed_resp, 'maxplayers').to_i
+      max_players: field_value(parsed_resp, 'maxplayers').to_i,
+      min_playtime_minutes: field_value(parsed_resp, 'minplaytime').to_i,
+      max_playtime_minutes: field_value(parsed_resp, 'maxplaytime').to_i
     }
   end
 

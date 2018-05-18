@@ -77,4 +77,41 @@ RSpec.describe Game, type: :model do
       end
     end
   end
+
+  describe '#playtime' do
+    context 'when min and max playtime is set to 2 and 5' do
+      let(:game) { Game.new min_playtime_minutes: 2, max_playtime_minutes: 5 }
+
+      it 'returns the range of playtime' do
+        expect(game.playtime_minutes).to eq '2-5'
+      end
+    end
+
+    context 'when min and max playtime are nil' do
+      it 'returns ?' do
+        expect(game.playtime_minutes).to eq '?'
+      end
+    end
+
+    context 'when min playtime is 2 and max playtime is not set' do
+      let(:game) { Game.new min_playtime_minutes: 2 }
+      it 'returns 2-?' do
+        expect(game.playtime_minutes).to eq '2-?'
+      end
+    end
+
+    context 'when max playtime is 5 and min playtime is not set' do
+      let(:game) { Game.new max_playtime_minutes: 5 }
+      it 'returns ?-5' do
+        expect(game.playtime_minutes).to eq '?-5'
+      end
+    end
+
+    context 'when min and max playtime is set to 3' do
+      let(:game) { Game.new min_playtime_minutes: 3, max_playtime_minutes: 3 }
+      it 'returns 3' do
+        expect(game.playtime_minutes).to eq '3'
+      end
+    end
+  end
 end
