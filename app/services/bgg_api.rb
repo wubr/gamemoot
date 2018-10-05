@@ -8,7 +8,7 @@ class BggApi
 
   def self.game_info(id)
     parsed_resp = get_response(THING_URL, id: id, type: 'boardgame')
-    return nil unless response_contains_item_nodes(parsed_resp)
+    raise Gamemoot::Errors::BggGameInfoNotFound unless response_contains_item_nodes(parsed_resp)
     {
       name: field_value(parsed_resp, 'name'),
       min_players: field_value(parsed_resp, 'minplayers').to_i,
@@ -19,9 +19,10 @@ class BggApi
   end
 
   def self.game_search(query_hash)
-    parsed_resp = parse_response(RestClient.get(SEARCH_URL,
-                                                params: { query: query_hash[:name],
-                                                          type: query_hash.fetch(:type, 'boardgame') }).body)
+    search_params = { query: query_hash[:name],
+                      type: query_hash.fetch(:type, 'boardgame') }
+
+    parsed_resp = get_response(SEARCH_URL, search_params)
     parsed_resp.css('item').map do |item|
       {
         name: field_value(item, 'name'),
@@ -38,8 +39,7 @@ class BggApi
   def self.get_response(url, params)
     parse_response(RestClient.get(url, params: params).body)
   rescue SocketError, RestClient::ExceptionWithResponse => error
-    Rails.logger.error "Error during BggApi::get_response(#{url}, #{params}): #{error}"
-    nil
+    raise Gamemoot::Errors::BggApiError, "Error during BggApi::get_response(#{url}, #{params}): #{error}"
   end
 
   def self.parse_response(resp)

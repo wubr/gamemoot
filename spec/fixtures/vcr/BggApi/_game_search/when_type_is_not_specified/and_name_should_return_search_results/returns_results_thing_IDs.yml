@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.boardgamegeek.com/xmlapi2/search?query=Scyt&type=boardgame
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.2.0 x86_64) ruby/2.4.2p198
+      Host:
+      - www.boardgamegeek.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.15.3
+      Date:
+      - Fri, 05 Oct 2018 16:15:11 GMT
+      Content-Type:
+      - text/xml; charset="UTF-8"
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.6.37
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fastcgi-Cache:
+      - MISS
+      Content-Encoding:
+      - gzip
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAA7XV3W6bMBQA4OvsKY6826X4h/ATJammqZ2m/VVLpV474CReAUe2E5W7vsPecE8yU5pVm5gGSOYK0LH5OD4+Xlw+lAWchDZSVUtELjACUWUql9VuiY52O03Q5WohrSgNWGV54YJiBFbo0qjt0Ygl2lt7MPMg2Ciu8x0vxU6I+4tMlYGbmx9k8BKMVpPJ5Gk2sPXBjf09BoHMl4jSiFGMVq+asMq9fg47aFlyXSM48eLonj/X8ElaWwhYZ7XdCxQ0EzejmmtRC64Px00hzV7k5zEUN/Bg1UYtgkbRfujfHhKlcRL93zNIEQ1V0IiSGemrgCu3fsfKJd30BCWD05KmMY37gubwoTrx3Hlgq1UJb7dce0sVITHrnao53DiQghue3cNrAj8ff7xkD965mQ3QdMqoNy4lmLGR3C4vsNTXXqCMkrj3XvjLSrusIfZoxcmAAv3DyjqtxJ81jqKxNRB2WvvW63ArnhE6cnt1lYABxqYs8toN6DhuWwVfN99FZuVJnLtBOHWNzyd3ZCW0hXDNM6t0/YwlbOp6uzcsTeJ0HDbq7Fz+8orDNAnHUeNOqr+shpTGAxrXrTvvv0kjQG3hWlRaejvzKWWz2WyY7E5WObzn5UZabx0pojjtcSrdcb3nZelWMMRvMMZz+CiLAm4FL59WuOFePfDCOs75F76ITKvKwNpy3az9WvT9ja7stjdm9QstiWbqcwsAAA==
+    http_version: 
+  recorded_at: Fri, 05 Oct 2018 16:15:11 GMT
+recorded_with: VCR 4.0.0
