@@ -2,13 +2,13 @@
   .col
     - if notice
       %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
-    %h1 Listing tables
+    %h1 Available game tables
 
     %table.table.table-striped
       %thead
         %tr
-          %th Table ID
           %th Table Name
+          %th Comments
           %th
           %th
           %th
@@ -16,8 +16,8 @@
       %tbody
         - @tables.each do |table|
           %tr
-            %td= table.id
             %td= table.name
+            %td= table.comments
             %td= link_to 'Show', table
             %td= link_to 'Edit', edit_table_path(table)
             %td= link_to 'Destroy', table, method: :delete, data: { confirm: 'Are you sure?' }

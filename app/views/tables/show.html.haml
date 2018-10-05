@@ -2,9 +2,9 @@
   .col
     - if notice
       %p{role: 'alert', class: 'alert alert-info', id: 'notice'}= notice
-    %h2= @table.name
+    %h1= @table.name
     = link_to 'Cancel', @game, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger'
-    %p This is where table stuff is going to go
+    = simple_format @table.comments
     %table.table#to-play
       %thead
         %th Games at this table

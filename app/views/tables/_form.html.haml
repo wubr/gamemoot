@@ -8,5 +8,8 @@
   .form-group
     = form.label :name
     = form.text_field :name, class: 'form-control'
+  .form-group
+    = form.label :comments
+    = form.text_area :comments, class: 'form-control'
   #actions
     = form.submit
