@@ -31,11 +31,22 @@ RSpec.describe Game, type: :model do
 
     describe 'bgg_game_id' do
       context 'when other games exist' do
-        let(:other_game) { Game.create!(name: 'Game A', bgg_game_id: '12345') }
-        let(:game) { Game.new(name: 'Game 1', bgg_game_id: other_game.bgg_game_id) }
+        context 'if set' do
+          let(:other_game) { Game.create!(name: 'Game A', bgg_game_id: '12345') }
+          let(:game) { Game.new(name: 'Game 1', bgg_game_id: other_game.bgg_game_id) }
 
-        it 'must be unique' do
-          expect(subject.errors[:bgg_game_id]).to include 'has already been taken'
+          it 'must be unique' do
+            expect(subject.errors[:bgg_game_id]).to include 'has already been taken'
+          end
+        end
+
+        context 'if not set' do
+          let!(:other_game) { Game.create!(name: 'Game A') }
+          let(:game) { Game.new(name: 'Game 1') }
+
+          it 'does not need to be unique' do
+            expect(subject).to be_valid
+          end
         end
       end
     end
