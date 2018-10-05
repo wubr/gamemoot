@@ -5,7 +5,7 @@ class Game < ApplicationRecord
   has_many :game_tables
   has_many :tables, through: :game_tables
   validates :name, presence: true, uniqueness: true
-  validates :bgg_game_id, uniqueness: true
+  validates :bgg_game_id, uniqueness: true, allow_nil: true
 
   before_validation :fetch_game_info
 
