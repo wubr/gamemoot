@@ -1,0 +1,51 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.boardgamegeek.com/xmlapi2/thing?id=169786&type=boardgame
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      Accept-Encoding:
+      - gzip, deflate
+      User-Agent:
+      - rest-client/2.0.2 (darwin17.2.0 x86_64) ruby/2.4.2p198
+      Host:
+      - www.boardgamegeek.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx/1.15.3
+      Date:
+      - Fri, 05 Oct 2018 16:01:13 GMT
+      Content-Type:
+      - text/xml; charset="UTF-8"
+      Vary:
+      - Accept-Encoding
+      X-Powered-By:
+      - PHP/5.6.37
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Fastcgi-Cache:
+      - MISS
+      Content-Encoding:
+      - gzip
+      Via:
+      - 1.1 google
+      Alt-Svc:
+      - clear
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        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
+    http_version: 
+  recorded_at: Fri, 05 Oct 2018 16:01:13 GMT
+recorded_with: VCR 4.0.0
