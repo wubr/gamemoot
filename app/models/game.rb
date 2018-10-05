@@ -43,13 +43,9 @@ class Game < ApplicationRecord
 
   def fetch_game_info
     return if Rails.env.test?
-
     return unless bgg_game_id.present? && bgg_game_id_changed?
-    game_info = BggGameInfoFetcher.fetch_game_info(self)
-    if game_info
-      assign_attributes(game_info)
-    else
-      errors.add(:bgg_game_id, 'did not match a boardgame record on BGG')
-    end
+    assign_attributes(BggGameInfoFetcher.fetch_game_info(self))
+  rescue Gamemoot::Errors::BggGameInfoNotFound
+    errors.add(:bgg_game_id, 'did not match a boardgame record on BGG')
   end
 end
